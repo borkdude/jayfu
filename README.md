@@ -46,7 +46,7 @@ run-main     Run main
 uberjar      Builds uberjar
 run-uber     Run uberjar
 graalvm      Checks GRAALVM_HOME env var
-    native-image Builds native image
+native-image Builds native image
 ```
 
 ## Tutorial
