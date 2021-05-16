@@ -60,7 +60,7 @@ native-image Builds native image
 
 To run this example using Clojure, run:
 
-``` text
+``` clojure
 $ bb run-main --help
 Usage:
   -f, --func FUNCTION  identity  The function applied to JSON from stdin
