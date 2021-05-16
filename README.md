@@ -17,7 +17,7 @@ A talk that guides you through this project is coming soon.
 
   `export GRAALVM_HOME=/Users/borkdude/Downloads/graalvm-ce-java11-21.1.0/Contents/Home`
 
-- To run the Clojure CLI with Clojure or Java, you will need to have a
+- To run with Clojure or Java, you will need to have a
   Java 8 or 11 installation available. You can also use the downloaded GraalVM for this.
 
 - Install [babashka](https://github.com/babashka/babashka#installation) (0.4.1 or higher).
