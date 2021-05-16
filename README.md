@@ -5,9 +5,9 @@ Learn how to make a native Clojure CLI with GraalVM native-image and SCI!
 This example is set up around an example CLI, `jayfu`, that reads JSON from
 stdin and transforms it using a function which is dynamically evaluated:
 
-``` text
-$ echo '{"a": 1}' | ./jayfu -f :a -k keyword
-1
+``` clojure
+$ echo '{"a": {"b": 2}}' | ./jayfu -f '#(-> % :a :b)' -k keyword
+2
 ```
 
 A talk that guides you through this project is coming soon.
