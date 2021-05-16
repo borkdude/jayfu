@@ -1,9 +1,14 @@
-# Native Clojure CLI Tutorial
+# jayfu
 
 Learn how to make a native Clojure CLI with GraalVM native-image and SCI!
 
-This example is set up around an example CLI that reads JSON from stdin and
-transforms it using a function which is dynamically evaluated.
+This example is set up around an example CLI, `jayfu`, that reads JSON from
+stdin and transforms it using a function which is dynamically evaluated:
+
+``` text
+$ echo '{"a": 1}' | ./jayfu -f :a -k keyword
+1
+```
 
 A talk that guides you through this project is coming soon.
 
