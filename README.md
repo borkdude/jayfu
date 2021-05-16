@@ -67,8 +67,8 @@ Usage:
   -k, --key-fn KEY-FN  identity  The function applied to keywords
   -h, --help
 
-$ echo '{"a": 1}' | bb run-main -f :a -k keyword
-1
+$ echo '{"a": {"b": 2}}' | bb run-main -f '#(-> % :a :b)' -k keyword
+2
 ```
 
 ## Build
@@ -81,9 +81,9 @@ $ bb native-image
 
 This should produce a binary called `jayfu`:
 
-``` text
-$ echo '{"a": 1}' | ./jayfu -f :a -k keyword
-1
+``` clojure
+$ echo '{"a": {"b": 2}}' | ./jayfu -f '#(-> % :a :b)' -k keyword
+2
 ```
 
 ## Talk
