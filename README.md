@@ -1,4 +1,4 @@
-# jayfu
+# Native Clojure CLI Tutorial
 
 Learn how to make a native Clojure CLI with GraalVM native-image and SCI!
 
@@ -84,6 +84,10 @@ $ echo '{"a": 1}' | ./jayfu -f :a -k keyword
 ## Talk
 
 A talk that guides you through this project is coming soon.
+
+## Tutorial
+
+Coming soon.
 
 ## License
 
