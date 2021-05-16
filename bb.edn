@@ -15,9 +15,9 @@
   native-image {:doc "Builds native image"
                 :depends [graalvm uberjar]
                 :task (do
-                        (shell (fs/file graalvm
-                                        "bin"
-                                        "gu")
+                        (shell (str (fs/file graalvm
+                                             "bin"
+                                             "gu"))
                                "install" "native-image")
                         (shell (str (fs/file graalvm
                                              "bin"
