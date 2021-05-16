@@ -2,8 +2,10 @@
 
 Learn how to make a native Clojure CLI with GraalVM native-image and SCI!
 
-The tutorial is set up around an example CLI that reads JSON from stdin and
+This example is set up around an example CLI that reads JSON from stdin and
 transforms it using a function which is dynamically evaluated.
+
+A talk that guides you through this project is coming soon.
 
 ## Prerequisites
 
@@ -49,9 +51,39 @@ graalvm      Checks GRAALVM_HOME env var
 native-image Builds native image
 ```
 
-## Tutorial
+## Run
 
-Check back soon.
+To run this example using Clojure, run:
+
+``` text
+$ bb run-main --help
+Usage:
+  -f, --func FUNCTION  identity  The function applied to JSON from stdin
+  -k, --key-fn KEY-FN  identity  The function applied to keywords
+  -h, --help
+
+$ echo '{"a": 1}' | bb run-main -f :a -k keyword
+1
+```
+
+## Build
+
+To build the native image, run:
+
+``` text
+$ bb native-image
+```
+
+This should produce a binary called `jayfu`:
+
+``` text
+$ echo '{"a": 1}' | ./jayfu -f :a -k keyword
+1
+```
+
+## Talk
+
+A talk that guides you through this project is coming soon.
 
 ## License
 
