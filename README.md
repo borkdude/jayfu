@@ -1,8 +1,6 @@
 # jayfu
 
-Learn how to make a native Clojure CLI!
-
-This is a tutorial and quickstart to GraalVM-based Clojure CLIs that require a bit of dynamic evaluation.
+Learn how to make a native Clojure CLI with GraalVM native-image and SCI!
 
 The tutorial is set up around an example CLI that reads JSON from stdin and
 transforms it using a function which is dynamically evaluated.
@@ -48,7 +46,7 @@ run-main     Run main
 uberjar      Builds uberjar
 run-uber     Run uberjar
 graalvm      Checks GRAALVM_HOME env var
-native-image Builds native image
+    native-image Builds native image
 ```
 
 ## Tutorial
