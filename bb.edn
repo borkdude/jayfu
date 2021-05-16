@@ -1,0 +1,29 @@
+{:tasks
+ {:requires ([babashka.fs :as fs]
+             [clojure.string :as str])
+  run-main {:doc "Run main"
+            :task (apply clojure "-M -m jayfu.main" *command-line-args*)}
+  uberjar {:doc "Builds uberjar"
+           :task (when (seq (fs/modified-since "jayfu.jar" "src"))
+                   (clojure "-X:uberjar"))}
+  run-uber {:doc "Run uberjar"
+            :depends [uberjar]
+            :task (apply shell "java -jar jayfu.jar" *command-line-args*)}
+  graalvm (let [env (System/getenv "GRAALVM_HOME")]
+            (assert "Set GRAALVM_HOME")
+            env)
+  native-image {:doc "Builds native image"
+                :depends [graalvm uberjar]
+                :task (do
+                        (shell (fs/file graalvm
+                                        "bin"
+                                        "gu")
+                               "install" "native-image")
+                        (shell (str (fs/file graalvm
+                                             "bin"
+                                             "native-image"))
+                               "-H:Name=jayfu"
+                               "-jar" "jayfu.jar"
+                               "--initialize-at-build-time"
+                               "--no-fallback"
+                               "--no-server"))}}}
