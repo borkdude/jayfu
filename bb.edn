@@ -11,9 +11,11 @@
   run-uber {:doc "Run uberjar"
             :depends [uberjar]
             :task (apply shell "java -jar jayfu.jar" *command-line-args*)}
-  graalvm (let [env (System/getenv "GRAALVM_HOME")]
-            (assert "Set GRAALVM_HOME")
-            env)
+  graalvm {:doc "Checks GRAALVM_HOME env var"
+           :task
+           (let [env (System/getenv "GRAALVM_HOME")]
+             (assert "Set GRAALVM_HOME")
+             env)}
   native-image {:doc "Builds native image"
                 :depends [graalvm uberjar]
                 :task (do
