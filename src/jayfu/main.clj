@@ -13,7 +13,7 @@
    ["-h" "--help"]])
 
 (defn -main [& args]
-  (let [db-uri "asami:mem://dbname"
+  (let [db-uri "asami:local://dbname"
         _ (d/create-database db-uri)
         conn (d/connect db-uri)
         first-movies [{:movie/title "Explorers"
