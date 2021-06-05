@@ -1,6 +1,6 @@
 {:deps {org.clojure/clojure {:mvn/version "1.10.3"}
         org.clojure/tools.cli {:mvn/version "1.0.206"}
-        org.clojure/data.json {:mvn/version "2.3.0"}
+        org.clojars.quoll/asami {:mvn/version "2.0.5"}
         borkdude/sci {:mvn/version "0.2.5"}}
  :aliases {:uberjar
            {:replace-deps

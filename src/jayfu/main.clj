@@ -1,5 +1,5 @@
 (ns jayfu.main
-  (:require [clojure.data.json :as json]
+  (:require [asami.core :as d]
             [clojure.tools.cli :as cli]
             [sci.core :as sci])
   ;; Needed for standalone jar to invoke with java
@@ -12,35 +12,25 @@
     :default "identity"]
    ["-h" "--help"]])
 
-(def eval-fn
-
-  ;; load-string is not GraalVM-compatible:
-  ;; Caused by: com.oracle.svm.core.jdk.UnsupportedFeatureError: Defining classes from new bytecodes run time.
-  ;; load-string
-
-  ;; works with GraalVM
-  sci/eval-string
-  )
-
 (defn -main [& args]
-  (let [parsed (cli/parse-opts args cli-options)
-        {:keys [:func
-                :key-fn
-                :help]}
-        (:options parsed)]
-    (if help
-      (do
-        (println "Usage:")
-        ;; Tools.cli provides a :summary key that can be used for printing:
-        (println (:summary parsed)))
-      (let [func (if func
-                   (eval-fn func)
-                   identity)
-            key-fn (if key-fn
-                     (eval-fn key-fn)
-                     identity)]
-        (prn (func
-              ;; *in* represents a reader from stdin in Clojure
-              ;; json/read can handle readers
-              ;; :key-fn transforms JSON string keys
-              (json/read *in* :key-fn key-fn)))))))
+  (let [db-uri "asami:mem://dbname"
+        _ (d/create-database db-uri)
+        conn (d/connect db-uri)
+        first-movies [{:movie/title "Explorers"
+                       :movie/genre "adventure/comedy/family"
+                       :movie/release-year 1985}
+                      {:movie/title "Demolition Man"
+                       :movie/genre "action/sci-fi/thriller"
+                       :movie/release-year 1993}
+                      {:movie/title "Johnny Mnemonic"
+                       :movie/genre "cyber-punk/action"
+                       :movie/release-year 1995}
+                      {:movie/title "Toy Story"
+                       :movie/genre "animation/adventure"
+                       :movie/release-year 1995}]
+        _ @(d/transact conn {:tx-data first-movies})
+        db (d/db conn)
+        res (d/q '[:find ?movie-title
+                   :where [?m :movie/title ?movie-title]] db)]
+    (prn res)
+    (shutdown-agents)))
