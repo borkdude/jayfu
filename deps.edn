@@ -1,6 +1,7 @@
 {:deps {org.clojure/clojure {:mvn/version "1.10.3"}
         org.clojure/tools.cli {:mvn/version "1.0.206"}
-        org.clojars.quoll/asami {:mvn/version "2.0.5"}
+        org.clojars.quoll/asami {:git/url "https://github.com/borkdude/asami"
+                                 :sha "b210f3e1f33c59334da010fd62bb757e3b3ebf78"}
         borkdude/sci {:mvn/version "0.2.5"}}
  :aliases {:uberjar
            {:replace-deps

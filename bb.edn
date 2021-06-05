@@ -34,4 +34,5 @@
                                "-jar" "jayfu.jar"
                                "--initialize-at-build-time"
                                "--no-fallback"
-                               "--no-server"))}}}
+                               "--no-server"
+                               "-H:ReflectionConfigurationFiles=reflection-config.json"))}}}
