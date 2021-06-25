@@ -14,7 +14,7 @@
   graalvm {:doc "Checks GRAALVM_HOME env var"
            :task
            (let [env (System/getenv "GRAALVM_HOME")]
-             (assert "Set GRAALVM_HOME")
+             (assert env "Set GRAALVM_HOME")
              env)}
   native-image {:doc "Builds native image"
                 :depends [graalvm uberjar]
