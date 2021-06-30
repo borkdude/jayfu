@@ -10,7 +10,7 @@ $ echo '{"a": {"b": 2}}' | ./jayfu -f '#(-> % :a :b)' -k keyword
 2
 ```
 
-A talk that guides you through this project is coming soon.
+See this [talk](https://www.youtube.com/watch?v=L2LAaQBVvxM) which guides you through this project.
 
 ## Prerequisites
 
@@ -88,7 +88,7 @@ $ echo '{"a": {"b": 2}}' | ./jayfu -f '#(-> % :a :b)' -k keyword
 
 ## Talk
 
-A talk that guides you through this project is coming soon.
+See this [talk](https://www.youtube.com/watch?v=L2LAaQBVvxM) which guides you through this project.
 
 ## Tutorial
 
