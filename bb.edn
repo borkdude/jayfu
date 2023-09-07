@@ -8,7 +8,8 @@
   uberjar {:doc "Builds uberjar"
            :task (when (seq (fs/modified-since "jayfu.jar"
                                                ["deps.edn" "build.clj" "src"]))
-                   (clojure "-T:build uber"))}
+                   (clojure "-T:build uber"))
+           :override-builtin true}
   run-uber {:doc "Run uberjar"
             :depends [uberjar]
             :task (apply shell "java -jar jayfu.jar" *command-line-args*)}
