@@ -27,11 +27,12 @@
                                                "gu.cmd"
                                                "gu")))
                                "install" "native-image")
-                        (shell (str (fs/file graalvm
+                        (apply shell (str (fs/file graalvm
                                              "bin"
                                              (if windows?
                                                "native-image.cmd"
                                                "native-image")))
                                "-jar" "jayfu.jar"
                                "--no-fallback"
-                               "-H:Name=jayfu"))}}}
+                               "-H:Name=jayfu"
+                               *command-line-args*))}}}
